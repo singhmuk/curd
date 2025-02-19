@@ -1,17 +1,13 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import cors from "cors";
+const express = require('express');
+const bodyParser = require('body-parser');
+const userRoutes = require('./routes/user');
+
 const app = express();
-dotenv.config();
+const port = 3000;
 
-import ItemRoutes from "./routers/items.js"
+app.use(bodyParser.json());
+app.use('/users', userRoutes);
 
-app.use(cors());
-app.use(express.json());
-mongoose.connect(process.env.MONGO_URI);
-
-app.use('/api/items', ItemRoutes);
-
-const port = process.env.PORT;
-app.listen(port, ()=>console.log(`Server is running on port ${port}`))
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
