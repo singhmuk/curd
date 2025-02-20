@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const { exec } = require('child_process');
 const userRoutes = require('./routes/user');
 
