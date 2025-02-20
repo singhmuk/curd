@@ -4,7 +4,7 @@ const connection = require('../db');
 exports.createUser = (req, res) => {
   const { name, email } = req.body;
   const query = 'INSERT INTO users (name, email) VALUES (?, ?)';
-
+console.log('aws');
   connection.query(query, [name, email], (err, results) => {
     if (err) {
       console.error(err);
